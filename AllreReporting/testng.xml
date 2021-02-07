@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test thread-count="5" name="Test">
+<suite name="Suite" thread-count="5" parallel="methods">
+  <test  name="TestRunnerChrome">
+  <parameter name="BrowserName" value="chrome"></parameter>
     <classes>
       <class name="generateReport.SampleReport"/>
+      <class name="generateReport.TestCase1"/>
     </classes>
-  </test> <!-- Test -->
+  </test> 
+  <test  name="TestRunnerFirefox">
+  <parameter name="BrowserName" value="firefox"></parameter>
+    <classes>
+      <class name="generateReport.SampleReport"/>
+      <class name="generateReport.TestCase1"/>
+    </classes>
+  </test><!-- Test -->
 </suite> <!-- Suite -->

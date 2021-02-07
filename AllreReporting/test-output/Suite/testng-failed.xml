@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <test thread-count="5" name="Test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="methods">
+  <test thread-count="5" name="TestRunnerChrome(failed)" parallel="methods">
+    <parameter name="BrowserName" value="chrome"/>
     <classes>
       <class name="generateReport.SampleReport">
         <methods>
@@ -11,5 +12,17 @@
         </methods>
       </class> <!-- generateReport.SampleReport -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- TestRunnerChrome(failed) -->
+  <test thread-count="5" name="TestRunnerFirefox(failed)" parallel="methods">
+    <parameter name="BrowserName" value="firefox"/>
+    <classes>
+      <class name="generateReport.SampleReport">
+        <methods>
+          <include name="tearDown"/>
+          <include name="logoutTest"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- generateReport.SampleReport -->
+    </classes>
+  </test> <!-- TestRunnerFirefox(failed) -->
 </suite> <!-- Failed suite [Suite] -->

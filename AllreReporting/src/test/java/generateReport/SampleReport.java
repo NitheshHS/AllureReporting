@@ -10,6 +10,7 @@ import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import io.qameta.allure.Description;
@@ -20,10 +21,11 @@ import io.qameta.allure.Step;
 @Listeners(generateReport.ITestListenerImp.class)
 public class SampleReport extends BaseClass {
 	WebDriver driver;
+	@Parameters(value = {"BrowserName"})
 	@BeforeClass
-	public void setUp() {
+	public void setUp(String browser) {
 		BaseClass b=new BaseClass();
-		driver=b.getInstanceOfDriver();
+		driver=b.getInstanceOfDriver(browser);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("http://localhost:8888/");
